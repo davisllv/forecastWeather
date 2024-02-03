@@ -1,0 +1,43 @@
+.container-footer {
+  height: 30%;
+  .container-days {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    .line-day {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      .badge-day {
+        padding: 8px;
+        border: 1px solid #151515;
+        background-color: #151515;
+        border-radius: 8px;
+        color: #f3f7f0;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      .badge-values {
+        .max-value {
+          font-size: 12px;
+          font-weight: 500;
+          color: #f3f7f0;
+          margin-right: 4px;
+        }
+        .min-value {
+          font-size: 10px;
+          color: #797979;
+        }
+      }
+
+      > img {
+        width: 50%;
+      }
+    }
+  }
+}
