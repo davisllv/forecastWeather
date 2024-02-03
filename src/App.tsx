@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { IoSearchOutline } from "react-icons/io5";
+import api from "./services/api";
 
 const flexContainer = css`
   display: flex;
@@ -82,12 +83,32 @@ const TableContainer = styled.table`
 `;
 
 function App() {
+  const [nameCity, setNameCity] = useState("");
+
+  const handleCallApiWeather = async () => {
+    // const response = await api.get(
+    //   `https://api.hgbrasil.com/weather?format=json-cors&key=00b8a5a2&city_name=${nameCity}`
+    // );
+    const response = await api.get("", {
+      params: {
+        city_name: nameCity,
+      },
+    });
+
+    console.log(response);
+  };
   return (
     <MainContainer>
       <ContentContainer>
         <MainTitle>Previsão do Tempo.</MainTitle>
         <InputContainer>
-          <InputComponent placeholder="Insira o nome da cidade aqui" />
+          <InputComponent
+            placeholder="Insira o nome da cidade aqui"
+            value={nameCity}
+            onChange={(event) => {
+              setNameCity(event.target.value);
+            }}
+          />
           <IoSearchOutline
             size={24}
             style={{
@@ -95,7 +116,7 @@ function App() {
               left: "-32px",
               cursor: "pointer",
             }}
-            onClick={() => console.log("Oi davi")}
+            onClick={handleCallApiWeather}
           />
         </InputContainer>
 
