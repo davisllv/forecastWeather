@@ -1,11 +1,22 @@
 import React from "react";
 import "./styles.scss";
+import { IDataForecastInterface } from "../../interfaces/IDataResponseInterface";
+import Days from "./days";
 
-const ForecastWeather = () => {
+interface IForecastWeatherDays {
+  forecastWeatherList?: IDataForecastInterface[];
+}
+
+const ForecastWeather: React.FC<IForecastWeatherDays> = ({
+  forecastWeatherList,
+}) => {
   return (
     <footer className="container-footer">
       <ul className="container-days">
-        <li className="line-day">
+        {forecastWeatherList?.map((weather) => (
+          <Days weather={weather} />
+        ))}
+        {/* <li className="line-day">
           <p className="badge-day">Sex</p>
           <div className="badge-values">
             <span className="max-value">18º</span>
@@ -15,7 +26,7 @@ const ForecastWeather = () => {
             src="https://assets.hgbrasil.com/weather/icons/conditions/rain.svg"
             alt="Rain"
           />
-        </li>
+        </li> */}
       </ul>
     </footer>
   );
