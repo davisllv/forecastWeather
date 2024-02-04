@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-const Footer = () => {
+const ForecastWeather = () => {
   return (
     <footer className="container-footer">
       <ul className="container-days">
@@ -21,4 +21,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default ForecastWeather;

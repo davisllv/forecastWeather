@@ -1,6 +1,6 @@
 import api from "../../services/api";
 import Content from "../content";
-import Footer from "../footer";
+import ForecastWeather from "../forecastWeather";
 import "./styles.scss";
 
 const Main = () => {
@@ -16,7 +16,7 @@ const Main = () => {
   return (
     <div className="container">
       <Content onClickSearchCity={handleCallApiWeather} />
-      <Footer />
+      <ForecastWeather />
     </div>
   );
 };
