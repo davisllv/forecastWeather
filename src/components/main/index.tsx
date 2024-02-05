@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../../services/api";
 import Content from "../content";
 import ForecastWeather from "../forecastWeather";
@@ -8,7 +8,9 @@ import useLoaderBackdrop from "../../hook/useLoaderBackdrop";
 
 const Main = () => {
   const [data, setData] = useState<IDataResponseInterface>({} as any);
+
   const { setIsLoading, isLoading } = useLoaderBackdrop();
+
   const handleFormatValues = (data: any): IDataResponseInterface => {
     console.log(data);
     const splitedDate = data.date.split("/");
@@ -51,8 +53,10 @@ const Main = () => {
         nameCity.toLocaleUpperCase()
       ) {
         alert("Errado");
+        setIsLoading(false);
         return;
       }
+
       setData(handleFormatValues(response.data.results));
 
       setIsLoading(false);
@@ -60,6 +64,10 @@ const Main = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    handleCallApiWeather("São Paulo");
+  }, []);
 
   return (
     <div className="container">
