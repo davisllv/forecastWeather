@@ -4,10 +4,11 @@ import Content from "../content";
 import ForecastWeather from "../forecastWeather";
 import "./styles.scss";
 import { IDataResponseInterface } from "../../interfaces/IDataResponseInterface";
+import useLoaderBackdrop from "../../hook/useLoaderBackdrop";
 
 const Main = () => {
   const [data, setData] = useState<IDataResponseInterface>({} as any);
-
+  const { setIsLoading, isLoading } = useLoaderBackdrop();
   const handleFormatValues = (data: any): IDataResponseInterface => {
     console.log(data);
     const splitedDate = data.date.split("/");
@@ -27,34 +28,48 @@ const Main = () => {
       city: data.city,
       condition: data.condition_slug,
       date: formatedDate.charAt(0).toUpperCase() + formatedDate.slice(1),
+      hour: data.time,
       systemHour: dateTimeSplited < 13 ? "am" : "pm",
+      forecast: data.forecast.splice(0, 7),
     };
 
     return formatedValues;
   };
 
   const handleCallApiWeather = async (nameCity: string) => {
-    const response = await api.get("", {
-      params: {
-        city_name: nameCity,
-      },
-    });
+    try {
+      setIsLoading(true);
 
-    if (
-      response.data.results.city_name.toLocaleUpperCase() !==
-      nameCity.toLocaleUpperCase()
-    ) {
-      alert("Errado");
-      return;
+      const response = await api.get("", {
+        params: {
+          city_name: nameCity,
+        },
+      });
+
+      if (
+        response.data.results.city_name.toLocaleUpperCase() !==
+        nameCity.toLocaleUpperCase()
+      ) {
+        alert("Errado");
+        return;
+      }
+      setData(handleFormatValues(response.data.results));
+
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
     }
-
-    // console.log(handleFormatValues(response.data.results));
-    setData(handleFormatValues(response.data));
   };
+
   return (
     <div className="container">
-      <Content onClickSearchCity={handleCallApiWeather} />
+      <Content onClickSearchCity={handleCallApiWeather} values={data} />
       <ForecastWeather forecastWeatherList={data.forecast} />
+      {isLoading && (
+        <div className="loader-main">
+          <div className="loader"></div>
+        </div>
+      )}
     </div>
   );
 };

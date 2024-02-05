@@ -11,10 +11,14 @@ const Days: React.FC<{ weather: IDataForecastInterface }> = ({ weather }) => {
           <span className="max-value">{weather.max}º</span>
           <span className="min-value">{weather.min}º</span>
         </div>
-        <img
-          src={`https://assets.hgbrasil.com/weather/icons/conditions/${weather.condition}.svg`}
-          alt="Rain"
-        />
+
+        <div className="tooltip">
+          <img
+            src={`https://assets.hgbrasil.com/weather/icons/conditions/${weather.condition}.svg`}
+            alt="Rain"
+          />
+          <p className="tooltip-value">Probabilidade de Chover</p>
+        </div>
       </li>
     </>
   );

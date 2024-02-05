@@ -17,18 +17,46 @@
 
   .badge-values {
     .max-value {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 500;
       color: #f3f7f0;
       margin-right: 4px;
     }
     .min-value {
-      font-size: 12px;
-      color: #797979;
+      font-size: 14px;
+      color: #a3a3a3;
     }
   }
 
   > img {
     width: 40%;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
+    .tooltip-value {
+      visibility: hidden;
+      width: 80px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px;
+      font-size: 12px;
+      position: absolute;
+      bottom: 85%;
+      left: 100%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.9s;
+    }
+  }
+
+  .tooltip:hover .tooltip-value {
+    visibility: visible;
+    opacity: 1;
   }
 }

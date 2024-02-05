@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import "./styles.scss";
+import { IDataResponseInterface } from "../../interfaces/IDataResponseInterface";
 
 interface IContentProps {
   onClickSearchCity: (nameCity: string) => Promise<void>;
+  values: Omit<IDataResponseInterface, "forecast">;
 }
 
-const Content: React.FC<IContentProps> = ({ onClickSearchCity }) => {
+const Content: React.FC<IContentProps> = ({ onClickSearchCity, values }) => {
   const [cityName, setCityName] = useState("");
   return (
     <div className="container-content">
       <div className="container-content-data">
         <h2 className="data-hour">
-          22:38<b className="system-hour">am</b>
+          {values.hour}
+          <b className="system-hour">{values.systemHour}</b>
         </h2>
-        <p className="date">Sexta, 02 Fevereiro 2023</p>
+        <p className="date">{values.date}</p>
       </div>
 
       <div className="container-values">
@@ -34,8 +37,12 @@ const Content: React.FC<IContentProps> = ({ onClickSearchCity }) => {
           </button>
         </div>
 
-        <p className="city-name">Caxias do Sul</p>
-        <p className="country-name">Brasil</p>
+        {!!values.city && (
+          <>
+            <p className="city-name">{values.city}</p>
+            <p className="country-name">Brasil</p>
+          </>
+        )}
       </div>
     </div>
   );

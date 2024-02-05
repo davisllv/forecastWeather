@@ -3,6 +3,7 @@ export interface IDataForecastInterface {
     max: number;
     min: number;
     condition: string;
+    date: string;
 }
 
 export interface IDataResponseInterface {
