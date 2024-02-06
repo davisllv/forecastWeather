@@ -2,6 +2,7 @@ export interface IDataForecastInterface {
     weekday: string;
     max: number;
     min: number;
+    rain_probability: number;
     condition: string;
     date: string;
 }

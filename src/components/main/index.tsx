@@ -67,6 +67,7 @@ const Main = () => {
 
   useEffect(() => {
     handleCallApiWeather("São Paulo");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

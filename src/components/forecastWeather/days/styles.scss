@@ -38,6 +38,9 @@
     cursor: pointer;
 
     .tooltip-value {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       visibility: hidden;
       width: 80px;
       background-color: #333;
@@ -46,6 +49,7 @@
       border-radius: 6px;
       padding: 8px;
       font-size: 12px;
+      min-height: 35px;
       position: absolute;
       bottom: 85%;
       left: 100%;

@@ -17,7 +17,10 @@ const Days: React.FC<{ weather: IDataForecastInterface }> = ({ weather }) => {
             src={`https://assets.hgbrasil.com/weather/icons/conditions/${weather.condition}.svg`}
             alt="Rain"
           />
-          <p className="tooltip-value">Probabilidade de Chover</p>
+          <div className="tooltip-value">
+           <p>Chuva</p> 
+           <p>{weather.rain_probability} %</p> 
+          </div>
         </div>
       </li>
     </>
