@@ -14,7 +14,7 @@ const Days: React.FC<{ weather: IDataForecastInterface }> = ({ weather }) => {
 
         <div className="tooltip">
           <img
-            src="src/assets/weather/rain.svg"
+            src={`${weather.condition}.svg`}
             alt={weather.condition}
           />
           <div className="tooltip-value">
