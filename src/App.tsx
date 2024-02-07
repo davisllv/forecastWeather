@@ -1,17 +1,18 @@
-import { ToastContainer } from "react-toastify";
+import { Zoom, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Main from "./components/main";
 
 const App = () => {
   return (
     <>
-      <ToastContainer 
-        position="top-right"
-        autoClose={200}
-
-      />
       <Main />
+      <ToastContainer 
+        autoClose={2000}
+        closeOnClick
+        transition={Zoom}
+      />
     </>
-    );
+  );
 };
 
 export default App;

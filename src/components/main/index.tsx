@@ -5,6 +5,7 @@ import ForecastWeather from "../forecastWeather";
 import "./styles.scss";
 import { IDataResponseInterface } from "../../interfaces/IDataResponseInterface";
 import useLoaderBackdrop from "../../hook/useLoaderBackdrop";
+import { toast } from "react-toastify";
 
 const Main = () => {
   const [data, setData] = useState<IDataResponseInterface>({} as any);
@@ -34,7 +35,6 @@ const Main = () => {
       systemHour: dateTimeSplited < 13 ? "am" : "pm",
       forecast: data.forecast.splice(0, 7),
     };
-
     return formatedValues;
   };
 
@@ -52,7 +52,7 @@ const Main = () => {
         response.data.results.city_name.toLocaleUpperCase() !==
         nameCity.toLocaleUpperCase()
       ) {
-        alert("Errado");
+        toast.error("City has not been found");
         setIsLoading(false);
         return;
       }

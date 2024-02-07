@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import "./styles.scss";
 import { IDataResponseInterface } from "../../interfaces/IDataResponseInterface";
+import { toast } from "react-toastify";
 
 interface IContentProps {
   onClickSearchCity: (nameCity: string) => Promise<void>;
@@ -10,6 +11,16 @@ interface IContentProps {
 
 const Content: React.FC<IContentProps> = ({ onClickSearchCity, values }) => {
   const [cityName, setCityName] = useState("");
+
+  const handleSubmit = () => {
+    if(!cityName){
+      toast.error("Please enter city name");
+      return;
+    }
+
+    onClickSearchCity(cityName)
+  }
+
   return (
     <div className="container-content">
       <div className="container-content-data">
@@ -29,9 +40,7 @@ const Content: React.FC<IContentProps> = ({ onClickSearchCity, values }) => {
           />
           <button
             type="button"
-            onClick={() => {
-              onClickSearchCity(cityName);
-            }}
+            onClick={handleSubmit}
           >
             <FcSearch size={18} className="icon-bt" />
           </button>
