@@ -5,7 +5,7 @@
 
 Web Page com a previsão do tempo, limitado apenas ao Brasil, coletado através da API disponibilizada pelo HGBrasil.
 
-[https://developer.yahoo.com/weather/](https://hgbrasil.com/status/weather)
+[https://hgbrasil.com/status/weather]
 
 ##### Features
 - Coleta a cidade digitada pelo usuário, faz a chamada à api e retorna os dados da previsão do tempo.
@@ -15,7 +15,7 @@ Web Page com a previsão do tempo, limitado apenas ao Brasil, coletado através 
  - - -
 ### Clonando repositório e executando
 Em seu terminal, na primeira vez que for utilizar
->git clone [https://github.com/pablobion/weather-react.git](https://github.com/davisllv/forecastWeather.git)
+>git clone [https://github.com/davisllv/forecastWeather.git]
 
 ##### Acessando a pasta
 >cd forecastWeather
