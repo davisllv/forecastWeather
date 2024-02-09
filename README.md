@@ -30,5 +30,4 @@ Em seu terminal, na primeira vez que for utilizar
 ## Preview
 
 
-![alt text](https://github.com/davisllv/forecastWeather/blob/main/public/computer-image.png)
-![alt text](https://github.com/davisllv/forecastWeather/blob/main/public/mobile-image.png)
+![alt text](https://github.com/davisllv/forecastWeather/blob/main/public/application-image.png)
