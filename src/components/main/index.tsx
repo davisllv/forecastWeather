@@ -13,7 +13,6 @@ const Main = () => {
   const { setIsLoading, isLoading } = useLoaderBackdrop();
 
   const handleFormatValues = (data: any): IDataResponseInterface => {
-    console.log(data);
     const splitedDate = data.date.split("/");
     const formatedDate = new Date(
       splitedDate[2],
@@ -60,8 +59,8 @@ const Main = () => {
       setData(handleFormatValues(response.data.results));
 
       setIsLoading(false);
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      toast.error(err.message)
     }
   };
 
